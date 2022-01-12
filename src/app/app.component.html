@@ -1,0 +1,65 @@
+<div class="container">
+  <h2>{{ title }}</h2>
+  <pre>{{ description }}</pre>
+  <div class="actions row gap-1">
+    <button
+      type="button"
+      class="col-2 btn btn-sm btn-primary"
+      (click)="booksAboveAmount()"
+    >
+      Above 500
+    </button>
+    <div class="mt-1 mb-3 col-3">
+      <input
+        type="text"
+        placeholder="search book"
+        class="form-control"
+        [(ngModel)]="search"
+        aria-describedby="bookHelp"
+        (input)="searchBooksByName()"
+      />
+    </div>
+    <button
+      type="button"
+      class="col-2 btn btn-sm btn-primary"
+      (click)="getBookByGenre('Thriller')"
+    >
+      Thriller
+    </button>
+    <button
+      type="button"
+      class="col-2 btn-sm btn btn-primary"
+      (click)="getBookByGenre('Fiction')"
+    >
+      Fiction
+    </button>
+    <button
+      type="button"
+      class="col-2 btn btn-sm btn-primary"
+      (click)="shoAll()"
+    >
+      Show All
+    </button>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Book ID</th>
+        <th scope="col">Book Name</th>
+        <th scope="col">Genre</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of tableData">
+        <th scope="row">{{ book.bookid }}</th>
+        <td>{{ book.bookname }}</td>
+        <td>{{ book.genre }}</td>
+        <td>{{ book.quantity }}</td>
+        <td>{{ book.price }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
